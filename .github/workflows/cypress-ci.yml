@@ -2,45 +2,51 @@ name: Cypress CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ui-cypress-framework  
+
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: ui-cypress-framework/package-lock.json
+          node-version: 18
 
       - name: Install dependencies
-        working-directory: ui-cypress-framework
         run: npm ci
 
       - name: Run Cypress tests
-        working-directory: ui-cypress-framework
         run: npx cypress run
 
-      - name: Upload Cypress screenshots (if any)
-        if: always()
+
+            #  Upload artifacts ONLY if tests failed
+      - name: Upload Cypress screenshots (on failure)
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
-          path: ui-cypress-framework/cypress/screenshots
+          path: cypress/screenshots/**
           if-no-files-found: ignore
 
-      - name: Upload Cypress videos (if any)
-        if: always()
+      - name: Upload Cypress videos (on failure)
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
-          path: ui-cypress-framework/cypress/videos
+          path: cypress/videos/**
           if-no-files-found: ignore
+
+     
+
+     
