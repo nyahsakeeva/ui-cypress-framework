@@ -1,18 +1,16 @@
-# ui-cypress-framework
+# UI Automation - Cypress Framework
 
-This repository showcases a real-world QA automation portfolio demonstrating
-enterprise-level UI and API testing practices.
+A recruiter-friendly Cypress E2E framework showcasing:
+- Page Object Model (POM)
+- Reusable custom commands
+- Stable selectors strategy
+- CI-ready execution with artifacts (screenshots/videos on failure)
 
-## Tech Stack
-- UI Automation: Cypress, Playwright
-- API Testing: REST (JavaScript)
-- Design Patterns: Page Object Model (POM)
-- CI/CD: GitHub Actions
-- Reporting: HTML & JSON reports
+## Tech
+- Cypress
+- Node.js / npm
 
-## What This Repo Demonstrates
-- Maintainable UI automation framework structure
-- Smoke and regression testing strategies
-- Positive and negative test coverage
-- Clean, readable, and reusable test code
-- CI-ready automation suitable for enterprise environments
+## Install
+```bash
+cd ui-cypress-framework
+npm ci
