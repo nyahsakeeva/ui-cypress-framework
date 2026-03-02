@@ -1,7 +1,7 @@
-// Custom Cypress commands go here
+import { loginPage } from "./objects";
 
-Cypress.Commands.add('login', (username, password) => {
-  cy.get('input[name="username"]').type(username);
-  cy.get('input[name="password"]').type(password);
-  cy.get('button[type="submit"]').click();
+Cypress.Commands.add("login", (username, password) => {
+  cy.get(loginPage.username).clear().type(username);
+  cy.get(loginPage.password).clear().type(password, { log: false });
+  cy.get(loginPage.submit).click();
 });
