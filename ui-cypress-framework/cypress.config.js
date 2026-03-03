@@ -2,14 +2,13 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://example.cypress.io",
+    baseUrl: "https://www.saucedemo.com",
     specPattern: "cypress/e2e/**/*.cy.js",
     supportFile: "cypress/support/e2e.js",
-    setupNodeEvents(on, config) {
-      return config;
-    },
+    fixturesFolder: "cypress/fixtures",
+    screenshotsFolder: "cypress/screenshots",
+    videosFolder: "cypress/videos",
+    video: true,
+    screenshotOnRunFailure: true,
   },
-  video: true,
-  screenshotsFolder: "cypress/screenshots",
-  videosFolder: "cypress/videos",
 });
