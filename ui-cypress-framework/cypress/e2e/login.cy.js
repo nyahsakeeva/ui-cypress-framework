@@ -1,7 +1,7 @@
 import { LoginPage } from "../pages/LoginPage";
 import { InventoryPage } from "../pages/InventoryPage";
 
-describe("Login - POM", () => {
+describe("Login - POM", { tags: ["@smoke", "@auth"] }, () => {
   const login = new LoginPage();
   const inventory = new InventoryPage();
 

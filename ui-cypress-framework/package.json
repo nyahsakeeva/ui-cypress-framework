@@ -4,12 +4,24 @@
   "description": "This module demonstrates a maintainable UI automation framework built with Cypress and designed for enterprise-scale applications.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:smoke": "cypress run --env grep=@smoke",
+    "cy:run:regression": "cypress run --env grep=@regression",
+    "report:merge": "mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome-merged.json",
+    "report:html": "marge cypress/reports/mochawesome-merged.json -f cypress-report -o cypress/reports/html",
+    "test:ci": "cypress run && npm run report:merge && npm run report:html",
+    "report:open": "open cypress/reports/html/cypress-report.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^15.11.0"
+    "@cypress/grep": "^6.0.0",
+    "cypress": "^15.11.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }
