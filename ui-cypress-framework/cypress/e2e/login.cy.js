@@ -1,5 +1,5 @@
-import { LoginPage } from "../pages/loginPage";
-import { InventoryPage } from "../pages/inventoryPage";
+import { LoginPage } from "../pages/LoginPage";
+import { InventoryPage } from "../pages/InventoryPage";
 
 describe("Login - POM", () => {
   const login = new LoginPage();
@@ -10,13 +10,12 @@ describe("Login - POM", () => {
   });
 
   it("logs in successfully", () => {
-    login.login("standard_user", "secret_sauce");
+    login.loginAs("standard");
     inventory.assertOnInventory();
   });
 
   it("shows error for invalid credentials", () => {
-    login.login("wrong", "wrong");
+    login.loginWith("wrong", "wrong");
     login.assertErrorContains("Username and password do not match");
   });
 });
-

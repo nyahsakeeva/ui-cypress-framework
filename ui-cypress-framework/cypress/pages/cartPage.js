@@ -1,16 +1,23 @@
-import { selectors } from "../support/objects";
+import { cartObjects } from "../support/objects";
 
 export class CartPage {
-  assertOnCart() {
-    cy.url().should("include", "/cart.html");
-    cy.get(selectors.cart.title).should("contain", "Your Cart");
+  assertOnCartPage() {
+    cy.url().should("include", "/cart");
   }
 
-  assertHasItems(minCount = 1) {
-    cy.get(selectors.cart.cartItem).should("have.length.at.least", minCount);
+  assertItemsCount(count) {
+    cy.get(cartObjects.cartItem).should("have.length", count);
+  }
+
+  assertItemVisible(productName) {
+    cy.contains(cartObjects.cartItem, productName).should("be.visible");
+  }
+
+  continueShopping() {
+    cy.get(cartObjects.continueShoppingBtn).click();
   }
 
   checkout() {
-    cy.get(selectors.cart.checkoutBtn).click();
+    cy.get(cartObjects.checkoutBtn).click();
   }
 }

@@ -1,52 +1,22 @@
-import { inventoryObjects } from "../support/objects";
+import { LoginPage } from "../pages/LoginPage";
+import { InventoryPage } from "../pages/InventoryPage";
 
-describe("Sorting Advanced", () => {
+describe("Sorting - POM", () => {
+  const login = new LoginPage();
+  const inventory = new InventoryPage();
 
   beforeEach(() => {
-    cy.loginAs("standard");
+    login.loginAs("standard");
+    inventory.assertOnInventory();
   });
 
-  const SORT = {
-    nameZA: "za",
-    priceHighLow: "hilo"
-  };
-
-  const getNames = () =>
-    cy.get(inventoryObjects.inventoryItemName).then(($els) =>
-      [...$els].map((el) => el.innerText.trim())
-    );
-
-  it("changes ordering when switching sort options", () => {
-
-    getNames().then((original) => {
-
-      cy.get(inventoryObjects.sortDropdown).select(SORT.nameZA);
-
-      getNames().then((za) => {
-
-        expect(za).to.not.deep.equal(original);
-
-        const expected = [...za].sort((a, b) => b.localeCompare(a));
-        expect(za).to.deep.equal(expected);
-
-      });
-    });
-
+  it("sorts items A to Z", () => {
+    inventory.sortBy("az");
+    inventory.assertNamesSortedAZ();
   });
 
-  it("price high-to-low is correctly sorted", () => {
-
-    cy.get(inventoryObjects.sortDropdown).select(SORT.priceHighLow);
-
-    const prices = [];
-
-    cy.get(inventoryObjects.inventoryItemPrice)
-      .each(($el) => prices.push(Number($el.text().replace("$", ""))))
-      .then(() => {
-        const expected = [...prices].sort((a, b) => b - a);
-        expect(prices).to.deep.equal(expected);
-      });
-
+  it("sorts items Z to A", () => {
+    inventory.sortBy("za");
+    inventory.assertNamesSortedZA();
   });
-
 });

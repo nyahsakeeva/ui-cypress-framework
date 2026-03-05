@@ -1,28 +1,54 @@
-import { selectors } from "../support/objects";
 import { inventoryObjects } from "../support/objects";
 
 export class InventoryPage {
   assertOnInventory() {
-    cy.url().should("include", "/inventory.html");
-    cy.get(inventoryObjects.inventoryItem).should("be.visible");
+    cy.get(inventoryObjects.title).should("be.visible").and("contain", "Products");
   }
 
-  addFirstItemToCart() {
-    cy.get(selectors.inventory.item).first().within(() => {
-      cy.get(selectors.inventory.addToCartBtn).click();
-    });
+  // ---------------- Cart actions ----------------
+  addItem(productName) {
+    cy.addItemToCartByName(productName);
+  }
+
+  removeItem(productName) {
+    cy.removeItemFromCartByName(productName);
   }
 
   openCart() {
-    cy.get(selectors.header.cartLink).click();
+    cy.get(inventoryObjects.cartLink).click();
   }
 
-  assertCartBadgeCount(expected) {
-    cy.get(selectors.header.cartBadge).should("have.text", String(expected));
+  assertCartBadge(count) {
+    cy.get(inventoryObjects.cartBadge).should("contain", String(count));
   }
 
   logout() {
-    cy.get(selectors.header.burgerBtn).click();
-    cy.get(selectors.header.logoutLink).should("be.visible").click();
+    cy.logout();
+  }
+
+  // ---------------- Sorting actions ----------------
+  sortBy(value) {
+    // values in SauceDemo: az, za, lohi, hilo
+    cy.get(inventoryObjects.sortDropdown).should("be.visible").select(value);
+  }
+
+  getItemNames() {
+    return cy.get(inventoryObjects.inventoryItemName).then(($els) =>
+      [...$els].map((el) => el.innerText.trim())
+    );
+  }
+
+  assertNamesSortedAZ() {
+    this.getItemNames().then((names) => {
+      const sorted = [...names].sort((a, b) => a.localeCompare(b));
+      expect(names, "Names should be sorted A to Z").to.deep.equal(sorted);
+    });
+  }
+
+  assertNamesSortedZA() {
+    this.getItemNames().then((names) => {
+      const sorted = [...names].sort((a, b) => b.localeCompare(a));
+      expect(names, "Names should be sorted Z to A").to.deep.equal(sorted);
+    });
   }
 }

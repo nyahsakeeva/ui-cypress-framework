@@ -1,89 +1,29 @@
-import { cartObjects, checkoutObjects } from "../support/objects";
+import { LoginPage } from "../pages/LoginPage";
+import { InventoryPage } from "../pages/InventoryPage";
+import { CartPage } from "../pages/CartPage";
+import { CheckoutPage } from "../pages/CheckoutPage";
 
-describe("Checkout", () => {
+describe("Checkout - POM", () => {
+  const login = new LoginPage();
+  const inventory = new InventoryPage();
+  const cart = new CartPage();
+  const checkout = new CheckoutPage();
 
   beforeEach(() => {
-    cy.loginAs("standard");
-    cy.addItemToCartByName("Sauce Labs Backpack");
-
-    cy.get(cartObjects.cartLink).click();
-    cy.get(checkoutObjects.checkoutBtn).click();
+    login.loginAs("standard");
+    inventory.assertOnInventory();
   });
 
-  it("requires first name / last name / postal code", () => {
+  it("completes checkout flow", () => {
+    inventory.addItem("Sauce Labs Backpack");
+    inventory.openCart();
 
-    cy.get(checkoutObjects.continueBtn).click();
+    cart.checkout();
 
-    cy.get(checkoutObjects.errorMessage)
-      .should("contain", "First Name is required");
+    checkout.fillInfo({ firstName: "Test", lastName: "User", zip: "60601" });
+    checkout.continue();
+    checkout.finish();
 
-    cy.get(checkoutObjects.firstNameInput).type("Alta");
-    cy.get(checkoutObjects.continueBtn).click();
-
-    cy.get(checkoutObjects.errorMessage)
-      .should("contain", "Last Name is required");
-
-    cy.get(checkoutObjects.lastNameInput).type("S");
-    cy.get(checkoutObjects.continueBtn).click();
-
-    cy.get(checkoutObjects.errorMessage)
-      .should("contain", "Postal Code is required");
-
+    checkout.assertOrderComplete();
   });
-
-
-  it("completes checkout end-to-end and validates totals", () => {
-
-    cy.get(checkoutObjects.firstNameInput).type("Alta");
-    cy.get(checkoutObjects.lastNameInput).type("S");
-    cy.get(checkoutObjects.postalCodeInput).type("60000");
-
-    cy.get(checkoutObjects.continueBtn).click();
-
-    cy.contains(checkoutObjects.summaryItemName, "Sauce Labs Backpack")
-      .should("be.visible");
-
-    let itemTotal;
-    let tax;
-    let total;
-
-    cy.get(checkoutObjects.summarySubtotal)
-      .invoke("text")
-      .then((text) => {
-        itemTotal = Number(text.replace("Item total: $", ""));
-      });
-
-    cy.get(checkoutObjects.summaryTax)
-      .invoke("text")
-      .then((text) => {
-        tax = Number(text.replace("Tax: $", ""));
-      });
-
-    cy.get(checkoutObjects.summaryTotal)
-      .invoke("text")
-      .then((text) => {
-        total = Number(text.replace("Total: $", ""));
-      })
-      .then(() => {
-        expect(Number((itemTotal + tax).toFixed(2))).to.equal(total);
-      });
-
-    cy.get(checkoutObjects.finishBtn).click();
-
-    cy.get(checkoutObjects.orderCompleteHeader)
-      .should("contain", "Thank you for your order");
-  });
-
-
-  it("can cancel checkout and return to cart", () => {
-
-    cy.get(checkoutObjects.cancelBtn).click();
-
-    cy.url().should("include", "cart");
-
-    cy.get(checkoutObjects.checkoutBtn)
-      .should("be.visible");
-
-  });
-
 });

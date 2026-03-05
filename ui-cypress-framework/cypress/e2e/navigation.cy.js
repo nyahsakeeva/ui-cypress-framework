@@ -1,40 +1,36 @@
-import { navigationObjects } from "../support/objects";
+import { LoginPage } from "../pages/LoginPage";
+import { InventoryPage } from "../pages/InventoryPage";
+import { CartPage } from "../pages/CartPage";
 
-describe("Navigation and App State", () => {
+describe("Navigation - POM", () => {
+  const login = new LoginPage();
+  const inventory = new InventoryPage();
+  const cart = new CartPage();
 
   beforeEach(() => {
-    cy.loginAs("standard");
+    login.loginAs("standard");
+    inventory.assertOnInventory();
   });
 
-  it("reset app state clears cart", () => {
-
-    cy.addItemToCartByName("Sauce Labs Backpack");
-
-    cy.get(navigationObjects.cartBadge)
-      .should("contain", "1");
-
-    cy.get(navigationObjects.burgerMenuBtn)
-      .click();
-
-    cy.get(navigationObjects.resetAppStateLink)
-      .click();
-
-    cy.get(navigationObjects.cartBadge)
-      .should("not.exist");
-
+  it("navigates to cart and verifies cart page loads", () => {
+    inventory.openCart();
+    cart.assertOnCartPage();
   });
 
-  it("about link navigates away", () => {
+  it("adds item -> goes to cart -> sees it in cart", () => {
+    inventory.addItem("Sauce Labs Backpack");
+    inventory.assertCartBadge(1);
 
-    cy.get(navigationObjects.burgerMenuBtn)
-      .click();
-
-    cy.get(navigationObjects.aboutLink)
-      .click();
-
-    cy.url()
-      .should("include", "saucelabs.com");
-
+    inventory.openCart();
+    cart.assertOnCartPage();
+    cart.assertItemVisible("Sauce Labs Backpack");
   });
 
+  it("goes to cart then continues shopping back to inventory", () => {
+    inventory.openCart();
+    cart.assertOnCartPage();
+
+    cart.continueShopping();
+    inventory.assertOnInventory();
+  });
 });

@@ -1,41 +1,27 @@
-import { authObjects } from "../support/objects";
+// cypress/pages/LoginPage.js
+import { loginObjects } from "../support/objects";
 
 export class LoginPage {
-
   visit() {
     cy.visit("/");
   }
 
-  fillUsername(username) {
-    cy.get(authObjects.usernameInput)
-      .should("be.visible")
-      .clear()
-      .type(username);
+  loginAs(role = "standard") {
+    // uses global helper command, but specs don't call commands directly
+    cy.loginAs(role);
   }
 
-  fillPassword(password) {
-    cy.get(authObjects.passwordInput)
-      .should("be.visible")
-      .clear()
-      .type(password, { log: false });
+  loginWith(username, password) {
+    cy.get(loginObjects.username).should("be.visible").clear().type(username);
+    cy.get(loginObjects.password).should("be.visible").clear().type(password, { log: false });
+    cy.get(loginObjects.loginBtn).click();
   }
 
-  submit() {
-    cy.get(authObjects.loginButton)
-      .should("be.enabled")
-      .click();
+  assertErrorContains(text) {
+    cy.get(loginObjects.errorMsg).should("be.visible").and("contain", text);
   }
 
-  login(username, password) {
-    this.fillUsername(username);
-    this.fillPassword(password);
-    this.submit();
+  assertOnLoginPage() {
+    cy.get(loginObjects.loginBtn).should("be.visible");
   }
-
-  assertErrorContains(message) {
-    cy.get(authObjects.errorMessage)
-      .should("be.visible")
-      .and("contain", message);
-  }
-
 }
