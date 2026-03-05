@@ -12,165 +12,191 @@ This repository serves as a **portfolio project showcasing Cypress automation be
 
 ---
 
-# Technology Stack
+# Tech Stack
 
-* Cypress
 * JavaScript
 * Node.js
-* Mocha
-* Chai
-* Page Object Model (POM)
+* Cypress
+* Mochawesome Reporter
+* Cypress Grep (test filtering)
+* GitHub Actions (CI/CD ready)
 
 ---
 
 # Framework Architecture
 
-The framework follows a **layered design pattern** where responsibilities are separated between different components.
-
-
-### Test Specs
-
-Located in:
+The framework follows the **Page Object Model (POM)** to separate concerns and improve maintainability.
 
 ```
-cypress/e2e
+cypress
+ ├── e2e
+ │   Test specifications
+ │
+ ├── pages
+ │   Page Object classes containing reusable UI actions
+ │
+ ├── support
+ │   Global commands, selectors, and test utilities
+ │
+ ├── fixtures
+ │   Static test data
+ │
+ ├── reports
+ │   Mochawesome reports, screenshots, and videos
 ```
 
-Test specification files contain the **test scenarios and assertions**.
-They interact only with **Page Objects** and do not contain selectors or direct Cypress UI logic.
+### Folder Responsibilities
 
-This keeps test cases focused on **user behavior and business logic**.
+**e2e**
+
+Contains test specifications. Tests focus on user behavior and business flows while delegating UI interactions to page objects.
+
+**pages**
+
+Contains Page Object classes that encapsulate UI logic, element interactions, and reusable workflows.
+
+**support**
+
+Contains shared utilities used across the framework:
+
+* global commands
+* element selectors
+* reporting hooks
+* Cypress configuration extensions
+
+**fixtures**
+
+Stores test data used during execution.
+
+**reports**
+
+Stores generated artifacts such as:
+
+* Mochawesome JSON reports
+* HTML dashboards
+* screenshots
+* videos
 
 ---
 
-### Page Objects
+# Key Features
 
-Located in:
+### Page Object Model (POM)
 
-```
-cypress/pages
-```
-
-Page Object classes encapsulate:
-
-* UI interactions
-* Page-level actions
-* Page assertions
-* Navigation logic
-
-Each page in the application is represented by a separate class.
-
-This approach improves maintainability and keeps test files clean.
+Encapsulates UI interactions within page classes to promote reusable, maintainable test code.
 
 ---
 
-### Custom Commands
+### Test Tagging and Filtering
 
-Located in:
+Tests can be tagged and selectively executed using Cypress Grep.
 
-```
-cypress/support/commands.js
-```
+Example tags used within the framework:
 
-Reusable Cypress commands are centralized in this file.
+* `@smoke`
+* `@regression`
+* `@auth`
 
-These commands abstract common operations used across tests such as:
-
-* authentication
-* cart interactions
-* logout functionality
-* reusable UI actions
-
-Centralizing commands reduces duplication and improves framework scalability.
+This allows targeted execution of specific test suites during development or CI runs.
 
 ---
 
-### Selectors
+### Mochawesome Reporting
 
-Located in:
+Test execution generates detailed reports including:
 
-```
-cypress/support/objects.js
-```
+* test results
+* execution duration
+* suite hierarchy
+* failure screenshots
+* logs
 
-All UI selectors are stored in one place.
-
-This approach provides several benefits:
-
-* easy maintenance when UI changes
-* cleaner page objects
-* consistent selector usage
-* reduced duplication
+Reports are produced as JSON files and merged into a single HTML dashboard.
 
 ---
 
-# Test Data
+### Test Artifacts
 
-Test data is stored in:
+The framework automatically stores debugging artifacts:
 
-```
-cypress/fixtures
-```
+* screenshots on failure
+* execution videos
+* HTML reports
 
-Credentials and other reusable data are maintained separately from test logic to improve maintainability and readability.
-
----
-
-# Installation
-
-Clone the repository.
-
-```
-git clone <repository-url>
-```
-
-Navigate to the project directory.
-
-```
-cd ui-cypress-framework
-```
-
-Install dependencies.
-
-```
-npm install
-```
+These artifacts are useful for CI pipelines and failure analysis.
 
 ---
 
 # Running Tests
 
-Open Cypress Test Runner.
+Install dependencies
 
 ```
-npx cypress open
+npm install
 ```
 
-Run tests in headless mode.
+Run all tests
 
 ```
-npx cypress run
+npm run cy:run
 ```
 
-Run a specific test file.
+Run smoke tests
 
 ```
-npx cypress run --spec "cypress/e2e/<spec-file>"
+npm run cy:run:smoke
+```
+
+Run regression tests
+
+```
+npm run cy:run:regression
 ```
 
 ---
 
-# Why Page Object Model?
+# Generating Reports
 
-The Page Object Model improves test automation by:
+After test execution, generate the final HTML report:
 
-* separating test logic from UI interaction
-* improving readability of test cases
-* reducing code duplication
-* simplifying maintenance
-* enabling scalable test architecture
+```
+npm run report:merge
+npm run report:html
+```
 
-When UI changes occur, updates are typically required only in the **Page Object layer**, not across the entire test suite.
+The report will be available in:
+
+```
+cypress/reports/html/cypress-report.html
+```
 
 ---
 
+# Continuous Integration
+
+This project is designed to integrate easily with CI pipelines such as:
+
+* GitHub Actions
+* Jenkins
+* GitLab CI
+
+CI pipelines can automatically:
+
+* install dependencies
+* run Cypress tests
+* generate reports
+* upload artifacts
+
+---
+
+# Goals of This Framework
+
+This project demonstrates best practices for:
+
+* scalable UI automation
+* maintainable test architecture
+* reusable Page Object patterns
+* professional test reporting
+* CI/CD integration readiness
+
+---
