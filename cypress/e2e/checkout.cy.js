@@ -1,7 +1,7 @@
-import { LoginPage } from "../pages/LoginPage";
-import { InventoryPage } from "../pages/InventoryPage";
-import { CartPage } from "../pages/CartPage";
-import { CheckoutPage } from "../pages/CheckoutPage";
+import { LoginPage } from "../pages/loginPage";
+import { InventoryPage } from "../pages/inventoryPage";
+import { CartPage } from "../pages/cartPage";
+import { CheckoutPage } from "../pages/checkoutPage";
 
 describe("Checkout - POM", () => {
   const login = new LoginPage();

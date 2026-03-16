@@ -1,5 +1,5 @@
-import { LoginPage } from "../pages/LoginPage";
-import { InventoryPage } from "../pages/InventoryPage";
+import { LoginPage } from "../pages/loginPage";
+import { InventoryPage } from "../pages/inventoryPage";
 
 describe("Login - POM", { tags: ["@smoke", "@auth"] }, () => {
   const login = new LoginPage();
