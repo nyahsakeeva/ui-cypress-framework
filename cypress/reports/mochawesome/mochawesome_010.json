@@ -1,0 +1,128 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-03-16T23:42:17.244Z",
+    "end": "2026-03-16T23:42:19.674Z",
+    "duration": 2430,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0fa05fb3-0356-41dd-8e0f-19a2dec76645",
+      "title": "",
+      "fullFile": "cypress/e2e/inventory.cy.js",
+      "file": "cypress/e2e/inventory.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ff18fe2a-ec7f-42f9-8472-c6983e0c2c53",
+          "title": "Inventory - POM",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "adds item and shows badge",
+              "fullTitle": "Inventory - POM adds item and shows badge",
+              "timedOut": null,
+              "duration": 1064,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.addItem(\"Sauce Labs Backpack\");\ninventory.assertCartBadge(1);",
+              "err": {},
+              "uuid": "c4fd03e8-77a4-4b05-97e9-87afbf05df71",
+              "parentUUID": "ff18fe2a-ec7f-42f9-8472-c6983e0c2c53",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "logs out successfully",
+              "fullTitle": "Inventory - POM logs out successfully",
+              "timedOut": null,
+              "duration": 1320,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.logout();\nlogin.assertOnLoginPage();",
+              "err": {},
+              "uuid": "1b4989cd-c3f8-4ea3-b415-3d2640fb3891",
+              "parentUUID": "ff18fe2a-ec7f-42f9-8472-c6983e0c2c53",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c4fd03e8-77a4-4b05-97e9-87afbf05df71",
+            "1b4989cd-c3f8-4ea3-b415-3d2640fb3891"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2384,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

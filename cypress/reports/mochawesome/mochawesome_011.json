@@ -1,0 +1,128 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-03-16T23:42:21.495Z",
+    "end": "2026-03-16T23:42:23.289Z",
+    "duration": 1794,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7873de16-7fca-4861-9215-e7797c1c1b57",
+      "title": "",
+      "fullFile": "cypress/e2e/login.cy.js",
+      "file": "cypress/e2e/login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "763ab19f-9928-4151-9a69-1189ba6e12a3",
+          "title": "Login - POM",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "logs in successfully",
+              "fullTitle": "Login - POM logs in successfully",
+              "timedOut": null,
+              "duration": 1004,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.loginAs(\"standard\");\ninventory.assertOnInventory();",
+              "err": {},
+              "uuid": "f7f712f0-950d-4ae6-ab52-8dacef05a0cb",
+              "parentUUID": "763ab19f-9928-4151-9a69-1189ba6e12a3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "shows error for invalid credentials",
+              "fullTitle": "Login - POM shows error for invalid credentials",
+              "timedOut": null,
+              "duration": 744,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.loginWith(\"wrong\", \"wrong\");\nlogin.assertErrorContains(\"Username and password do not match\");",
+              "err": {},
+              "uuid": "b58b6fa9-601b-4033-8f63-7e0947b1b5a8",
+              "parentUUID": "763ab19f-9928-4151-9a69-1189ba6e12a3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f7f712f0-950d-4ae6-ab52-8dacef05a0cb",
+            "b58b6fa9-601b-4033-8f63-7e0947b1b5a8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1748,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

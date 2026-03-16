@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress smoke + generate HTML report
-        run: npm run test:ci:smoke
+      - name: Run Cypress smoke + generate HTML report  
+        run: npm run cy:run:smoke && npm run report:merge && npm run report:html
 
       - name: Upload Mochawesome HTML report
         if: always()
