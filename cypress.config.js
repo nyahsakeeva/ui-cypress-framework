@@ -1,23 +1,12 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
+import { plugin as cypressGrepPlugin } from '@cypress/grep/plugin'
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-  const grepPlugin = require("@cypress/grep/plugin");
-  const pluginFn =
-    (typeof grepPlugin === "function" && grepPlugin) ||
-    grepPlugin.plugin ||
-    grepPlugin.default;
-
-  if (typeof pluginFn !== "function") {
-    throw new Error(
-      "Could not load @cypress/grep plugin function. Check installed version/export."
-    );
-  }
-
-  pluginFn(config);
-  return config;
-},
+      cypressGrepPlugin(config)
+      return config;
+    },
 
     baseUrl: "https://www.saucedemo.com",
     specPattern: "cypress/e2e/**/*.cy.js",

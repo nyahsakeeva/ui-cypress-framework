@@ -1,7 +1,7 @@
 import { LoginPage } from "../pages/loginPage.js";
 import { InventoryPage } from "../pages/inventoryPage.js";
 
-describe("Inventory - POM", () => {
+describe("Inventory - POM", { tags: ["@regression", "@inventory"] }, () => {
   const login = new LoginPage();
   const inventory = new InventoryPage();
 

@@ -3,7 +3,7 @@ import { InventoryPage } from "../pages/inventoryPage.js";
 import { CartPage } from "../pages/cartPage.js";
 import { CheckoutPage } from "../pages/checkoutPage.js";
 
-describe("Checkout - POM", () => {
+describe("Checkout - POM", { tags: ["@regression", "@checkout"] }, () => {
   const login = new LoginPage();
   const inventory = new InventoryPage();
   const cart = new CartPage();

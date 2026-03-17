@@ -2,7 +2,7 @@ import { LoginPage } from "../pages/loginPage.js";
 import { InventoryPage } from "../pages/inventoryPage.js";
 import { CartPage } from "../pages/cartPage.js";
 
-describe("Cart - POM", () => {
+describe("Cart - POM", { tags: ["@regression", "@cart"] }, () => {
   const login = new LoginPage();
   const inventory = new InventoryPage();
   const cart = new CartPage();

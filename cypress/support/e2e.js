@@ -1,3 +1,5 @@
 import "./commands";
-import "@cypress/grep";
 import "./report";
+
+import { register as registerCypressGrep } from '@cypress/grep'
+registerCypressGrep()
