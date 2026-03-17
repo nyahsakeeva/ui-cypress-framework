@@ -1,4 +1,4 @@
-// cypress/pages/CheckoutPage.js
+// cypress/pages/checkoutPage.js
 import { checkoutObjects } from "../support/objects";
 
 export class CheckoutPage {
