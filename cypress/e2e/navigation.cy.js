@@ -1,6 +1,6 @@
-import { LoginPage } from "../pages/loginPage";
-import { InventoryPage } from "../pages/inventoryPage";
-import { CartPage } from "../pages/cartPage";
+import { LoginPage } from "../pages/loginPage.js";
+import { InventoryPage } from "../pages/inventoryPage.js";
+import { CartPage } from "../pages/cartPage.js";
 
 describe("Navigation - POM", () => {
   const login = new LoginPage();

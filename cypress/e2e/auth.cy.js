@@ -1,5 +1,5 @@
-import { LoginPage } from "../pages/loginPage";
-import { InventoryPage } from "../pages/inventoryPage";
+import { LoginPage } from "../pages/loginPage.js";
+import { InventoryPage } from "../pages/inventoryPage.js";
 
 describe("Auth - POM", () => {
   const login = new LoginPage();
