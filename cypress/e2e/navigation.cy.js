@@ -1,8 +1,8 @@
-import { LoginPage } from "../pages/LoginPage";
-import { InventoryPage } from "../pages/InventoryPage";
-import { CartPage } from "../pages/CartPage";
+import { LoginPage } from "../pages/loginPage.js";
+import { InventoryPage } from "../pages/inventoryPage.js";
+import { CartPage } from "../pages/cartPage.js";
 
-describe("Navigation - POM", () => {
+describe("Navigation - POM", { tags: ["@regression", "@navigation"] }, () => {
   const login = new LoginPage();
   const inventory = new InventoryPage();
   const cart = new CartPage();
