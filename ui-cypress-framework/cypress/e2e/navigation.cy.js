@@ -2,7 +2,7 @@ import { LoginPage } from "../pages/LoginPage";
 import { InventoryPage } from "../pages/InventoryPage";
 import { CartPage } from "../pages/CartPage";
 
-describe("Navigation - POM", () => {
+describe("Navigation - POM", { tags: '@regression' }, () => {
   const login = new LoginPage();
   const inventory = new InventoryPage();
   const cart = new CartPage();
