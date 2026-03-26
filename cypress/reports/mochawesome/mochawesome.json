@@ -1,0 +1,166 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-03-25T22:51:12.685Z",
+    "end": "2026-03-25T22:51:17.222Z",
+    "duration": 4537,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "15702f60-ab38-412d-94db-4a90b62d4149",
+      "title": "",
+      "fullFile": "cypress/e2e/auth.cy.js",
+      "file": "cypress/e2e/auth.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c141f0f0-59c0-42bd-9214-4ba94183ec5f",
+          "title": "Auth - POM",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "logs in as standard user using role helper",
+              "fullTitle": "Auth - POM logs in as standard user using role helper",
+              "timedOut": null,
+              "duration": 1413,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.loginAs(\"standard\");\ninventory.assertOnInventory();",
+              "err": {},
+              "uuid": "17b8e839-ac80-482e-a3ba-0fe142ceddf5",
+              "parentUUID": "c141f0f0-59c0-42bd-9214-4ba94183ec5f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "logs out successfully",
+              "fullTitle": "Auth - POM logs out successfully",
+              "timedOut": null,
+              "duration": 1375,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.loginAs(\"standard\");\ninventory.assertOnInventory();\ninventory.logout();\nlogin.assertOnLoginPage();",
+              "err": {},
+              "uuid": "d93707c1-a991-4fd5-88bd-44b1dcca4608",
+              "parentUUID": "c141f0f0-59c0-42bd-9214-4ba94183ec5f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "shows error for invalid credentials",
+              "fullTitle": "Auth - POM shows error for invalid credentials",
+              "timedOut": null,
+              "duration": 758,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.visit();\nlogin.loginWith(\"wrong\", \"wrong\");\nlogin.assertErrorContains(\"Username and password do not match\");",
+              "err": {},
+              "uuid": "2ff48412-d8d2-4eae-8e73-45b99722aa53",
+              "parentUUID": "c141f0f0-59c0-42bd-9214-4ba94183ec5f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "locked out user cannot log in",
+              "fullTitle": "Auth - POM locked out user cannot log in",
+              "timedOut": null,
+              "duration": 889,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.loginAs(\"locked\");\nlogin.assertErrorContains(\"Sorry, this user has been locked out\");",
+              "err": {},
+              "uuid": "c2c9f320-f830-43a7-a674-bc916302cbd9",
+              "parentUUID": "c141f0f0-59c0-42bd-9214-4ba94183ec5f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "17b8e839-ac80-482e-a3ba-0fe142ceddf5",
+            "d93707c1-a991-4fd5-88bd-44b1dcca4608",
+            "2ff48412-d8d2-4eae-8e73-45b99722aa53",
+            "c2c9f320-f830-43a7-a674-bc916302cbd9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4435,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

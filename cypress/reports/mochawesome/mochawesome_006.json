@@ -1,0 +1,128 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-03-25T22:51:42.756Z",
+    "end": "2026-03-25T22:51:45.031Z",
+    "duration": 2275,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3a66e8d7-128b-4af3-8e38-155315f55f4d",
+      "title": "",
+      "fullFile": "cypress/e2e/sorting.cy.js",
+      "file": "cypress/e2e/sorting.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e148c758-8716-4958-b2be-4fad6a26b734",
+          "title": "Sorting - POM",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "sorts items A to Z",
+              "fullTitle": "Sorting - POM sorts items A to Z",
+              "timedOut": null,
+              "duration": 1155,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.sortBy(\"az\");\ninventory.assertNamesSortedAZ();",
+              "err": {},
+              "uuid": "86d2764b-a1df-49eb-8bd2-88f50b9f84fd",
+              "parentUUID": "e148c758-8716-4958-b2be-4fad6a26b734",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "sorts items Z to A",
+              "fullTitle": "Sorting - POM sorts items Z to A",
+              "timedOut": null,
+              "duration": 1067,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.sortBy(\"za\");\ninventory.assertNamesSortedZA();",
+              "err": {},
+              "uuid": "33647d1c-c705-4bec-bbe9-a5019ba5b597",
+              "parentUUID": "e148c758-8716-4958-b2be-4fad6a26b734",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "86d2764b-a1df-49eb-8bd2-88f50b9f84fd",
+            "33647d1c-c705-4bec-bbe9-a5019ba5b597"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2222,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -1,12 +1,12 @@
-name: Cypress Smoke Tests
+name: Cypress Regression Tests
 
 on:
-  schedule:
-    - cron: "0 12 * * *"   # 6:00 AM CST (12:00 UTC)
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
-  smoke-run:
+  regression-run:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,21 +22,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress smoke + generate HTML report
-        run: npm run cy:run:smoke && npm run report:merge && npm run report:html
+      - name: Run Cypress regression + generate HTML report
+        run: npm run cy:run:regression && npm run report:merge && npm run report:html
 
       - name: Upload Mochawesome HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoke-mochawesome-html-report
+          name: regression-mochawesome-html-report
           path: cypress/reports/html
 
       - name: Upload Mochawesome JSON + merged JSON
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoke-mochawesome-json
+          name: regression-mochawesome-json
           path: |
             cypress/reports/mochawesome
             cypress/reports/mochawesome-merged.json
@@ -45,7 +45,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoke-cypress-screenshots
+          name: regression-cypress-screenshots
           path: cypress/reports/screenshots
           if-no-files-found: ignore
 
@@ -53,6 +53,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoke-cypress-videos
+          name: regression-cypress-videos
           path: cypress/reports/videos
           if-no-files-found: ignore

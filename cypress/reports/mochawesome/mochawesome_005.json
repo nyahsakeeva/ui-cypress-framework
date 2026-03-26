@@ -1,0 +1,147 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-03-25T22:51:36.990Z",
+    "end": "2026-03-25T22:51:40.585Z",
+    "duration": 3595,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "de1edef1-e5f9-4dab-a0ef-5d52a1975991",
+      "title": "",
+      "fullFile": "cypress/e2e/navigation.cy.js",
+      "file": "cypress/e2e/navigation.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2e5de6e5-55b4-4f39-9fc0-d54c6ad000bc",
+          "title": "Navigation - POM",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "navigates to cart and verifies cart page loads",
+              "fullTitle": "Navigation - POM navigates to cart and verifies cart page loads",
+              "timedOut": null,
+              "duration": 1342,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.openCart();\ncart.assertOnCartPage();",
+              "err": {},
+              "uuid": "41ce0e31-454e-40d7-baf8-5f772736fe52",
+              "parentUUID": "2e5de6e5-55b4-4f39-9fc0-d54c6ad000bc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "adds item -> goes to cart -> sees it in cart",
+              "fullTitle": "Navigation - POM adds item -> goes to cart -> sees it in cart",
+              "timedOut": null,
+              "duration": 1137,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.addItem(\"Sauce Labs Backpack\");\ninventory.assertCartBadge(1);\ninventory.openCart();\ncart.assertOnCartPage();\ncart.assertItemVisible(\"Sauce Labs Backpack\");",
+              "err": {},
+              "uuid": "27725381-4eb5-485a-960d-0f30e83277f4",
+              "parentUUID": "2e5de6e5-55b4-4f39-9fc0-d54c6ad000bc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "goes to cart then continues shopping back to inventory",
+              "fullTitle": "Navigation - POM goes to cart then continues shopping back to inventory",
+              "timedOut": null,
+              "duration": 1031,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "inventory.openCart();\ncart.assertOnCartPage();\ncart.continueShopping();\ninventory.assertOnInventory();",
+              "err": {},
+              "uuid": "06722940-59c8-4cf3-b048-aacb87d50964",
+              "parentUUID": "2e5de6e5-55b4-4f39-9fc0-d54c6ad000bc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "41ce0e31-454e-40d7-baf8-5f772736fe52",
+            "27725381-4eb5-485a-960d-0f30e83277f4",
+            "06722940-59c8-4cf3-b048-aacb87d50964"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3510,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
